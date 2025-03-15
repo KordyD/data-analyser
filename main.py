@@ -1,7 +1,6 @@
 import os
 
-from file_parser import process_file
-from html_parser import extract_text_from_url
+from parsers import web_parser, file_parser
 
 
 def main():
@@ -12,15 +11,18 @@ def main():
 
     if choice == '1':
         file_path = input("Enter the path to the file: ")
-        if os.path.exists(file_path):
-            print(process_file(file_path))
-        else:
-            print("File not found.")
+        parser = file_parser.FileParser(file_path)
+        print(parser.process_file())
     elif choice == '2':
         url = input("Enter the URL: ")
-        print(extract_text_from_url(url))
+        parser = web_parser.WebParser(url)
+        print(parser.process_url())
     else:
         print("Invalid choice. Please try again.")
 
 if __name__ == "__main__":
-    main()
+    try:
+        while True:
+            main()
+    except KeyboardInterrupt:
+        print("\nProgram interrupted. Exiting...")
