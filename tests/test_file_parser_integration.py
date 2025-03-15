@@ -16,6 +16,17 @@ def test_integration_process_file_pdf():
     result = parser.process_file()
     assert "Sample text" in result, "Expected 'Sample text' in PDF file"
 
+def test_integration_process_with_tables_file_docx():
+    parser = FileParser("tests/paragraphs_and_tables.docx")
+    result = parser.process_file()
+    assert "paragraph" in result, "Expected 'paragraph' in DOCX file"
+
+def test_integration_process_with_img_file_pdf():
+    parser = FileParser("tests/two_column.pdf")
+    result = parser.process_file()
+    assert "LETTERS" in result, "Expected 'LETTERS' in PDF file"
+
+
 def test_integration_process_file_not_found():
     parser = FileParser("tests/not_found.docx")
     result = parser.process_file()
