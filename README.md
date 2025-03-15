@@ -31,14 +31,6 @@ python main.py
 
 Follow the prompts to choose between parsing a file or a URL.
 
-## Docker
-
-Build and run the Docker container:
-
-```sh
-docker-compose run --rm app
-```
-
 ## Running Tests
 
 To run the tests, use:
